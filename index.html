@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+        #root {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <div id="root2"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--This file i.e. react.development.js contains the React Code which is plain JS-->
+
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!--This file i.e. react-dom.development.js is useful for DOM operations or use to modify the DOM-->
+
+    <script>
+        const parent = React.createElement("div", { id: "parent" }, [
+            React.createElement("div", { id: "child1" }, [
+                React.createElement("h1", { id: "heading_1" }, "Heading 1"),
+                React.createElement("h2", { id: "heading_2" }, "Heading 2"),
+            ]),
+            React.createElement("div", { id: "child2" }, [
+                React.createElement("h1", { id: "heading_1" }, "Heading 1"),
+                React.createElement("h2", { id: "heading_2" }, "Heading 2"),
+            ]),
+        ]);
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        const root2 = ReactDOM.createRoot(document.getElementById("root2"));
+        console.log('root', root)
+        root.render(parent);
+        root2.render(parent);
+
+    </script>
+</body>
+<!-- async vs defer
+Async vs. Defer in JavaScript Script Tags
+Both async and defer attributes are used with <script> tags to control how external JavaScript files are loaded and executed, primarily to prevent them from blocking the HTML parsing and rendering process, which can lead to a slow user experience. 
+Here's a breakdown of their differences:
+1. Default Behavior (without async or defer):
+Blocking: Without async or defer, the browser's HTML parser pauses when it encounters a <script> tag.
+Sequential Loading and Execution: The browser downloads and executes the script immediately, and only after the script has finished executing does the browser resume parsing the HTML.
+Performance Impact: This can be detrimental to page load speed, especially if the script is large or takes a long time to download, as it prevents the user from seeing the page content until the script is fully processed. 
+2. async Attribute:
+Asynchronous Download and Execution: When the async attribute is present, the browser downloads the script asynchronously in the background while continuing to parse the HTML document.
+Immediate Execution: Once the script is downloaded, it is executed immediately, potentially interrupting the HTML parsing process.
+No Guaranteed Order: Scripts with async execute as soon as they are ready, regardless of their order in the HTML document. This means a script that appears later in the HTML might execute before an earlier script if it finishes downloading first.
+Best Use Cases: async is ideal for independent scripts that don't depend on other scripts or the DOM being fully ready, such as analytics or tracking scripts. 
+3. defer Attribute:
+Asynchronous Download, Deferred Execution: Similar to async, defer also downloads the script asynchronously in the background while the HTML parser continues.
+Execution After HTML Parsing: However, the execution of the script is deferred until after the HTML document has been fully parsed.
+Guaranteed Order: Scripts with defer execute in the order they appear in the HTML document.
+Best Use Cases: defer is suitable for scripts that depend on the DOM being ready (e.g., scripts that manipulate the DOM) or when the execution order of multiple scripts is important. It's often preferred for optimal page speed and user experience, especially on mobile devices. 
+Comparison Table:
+Feature 	async	defer
+Download	Asynchronous (in parallel with HTML parsing)	Asynchronous (in parallel with HTML parsing)
+Execution	Immediately after download, potentially interrupting HTML parsing	After HTML parsing is complete, before DOMContentLoaded event
+Execution Order	Not guaranteed (load-first order)	Guaranteed (in document order)
+Dependency	Suitable for independent scripts	Suitable for scripts that depend on the DOM or other scripts, and when execution order matters
+Render Blocking	Does not block rendering	Does not block rendering
+In Summary:
+Use async for independent scripts that don't need the DOM to be ready and whose execution order doesn't matter (e.g., analytics).
+Use defer for scripts that depend on the DOM or other scripts, and when maintaining execution order is important.
+
+Here's a breakdown of their differences:
+react.development.js (Development Mode):**
+This version is intended for use during the development phase of your React application. It includes debugging features, warnings, and error messages to help identify and fix issues. It supports features like Fast Refresh and intentionally avoids certain performance optimizations to enhance the debugging experience. Due to these inclusions, it is larger in file size and not optimized for performance in a production environment. 
+2. react.production.js (Production Mode): 
+This version is optimized for deploying your React application in a production environment. It removes development-specific code and optimizations to make your application faster and more efficient. It has a significantly smaller file size due to minification and compression and suppresses detailed error messages and warnings. It often includes caching strategies to improve load times. 
+In Summary:
+Feature 	react.development.js	react.production.js
+Use Case	Development and debugging	Production deployment
+Debugging	Includes warnings and debugging tools	Suppresses detailed messages
+Performance	Optimized for debugging, potentially slower	Optimized for performance and size
+File Size	Larger	Smaller
+Fast Refresh	Supported	Not included
+Caching	May not include strategies	Often includes strategies
+Choosing the right file:
+Use react.development.js during development for debugging tools and error messages. Use react.production.js for production deployment to optimize performance and reduce file size. -->
+
+</html>
