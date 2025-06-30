@@ -11,41 +11,22 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="style.css">
     <style>
-        #root {
-            background-color: aqua;
-        }
+
     </style>
 </head>
 
 <body>
     <div id="root"></div>
     <div id="root2"></div>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- <script src="https://unpkg.com/react@18/umd/react.development.js"></script> -->
     <!--This file i.e. react.development.js contains the React Code which is plain JS-->
 
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
     <!--This file i.e. react-dom.development.js is useful for DOM operations or use to modify the DOM-->
 
-    <script>
-        const parent = React.createElement("div", { id: "parent" }, [
-            React.createElement("div", { id: "child1" }, [
-                React.createElement("h1", { id: "heading_1" }, "Heading 1"),
-                React.createElement("h2", { id: "heading_2" }, "Heading 2"),
-            ]),
-            React.createElement("div", { id: "child2" }, [
-                React.createElement("h1", { id: "heading_1" }, "Heading 1"),
-                React.createElement("h2", { id: "heading_2" }, "Heading 2"),
-            ]),
-        ]);
-
-        const root = ReactDOM.createRoot(document.getElementById("root"));
-        const root2 = ReactDOM.createRoot(document.getElementById("root2"));
-        console.log('root', root)
-        root.render(parent);
-        root2.render(parent);
-
+    <script type="module" src="./App.js">
     </script>
 </body>
 <!-- async vs defer
